@@ -14,7 +14,190 @@
       "clinic_site": 0.55
     }
   },
-  "clinics": [],
+  "clinics": [
+    {
+      "clinic_key": "banobagi-plastic-surgery|seoul",
+      "display_name": "Banobagi Plastic Surgery",
+      "city": "Seoul",
+      "reviews": [
+        {
+          "id": "nr_005",
+          "clinic_key": "banobagi-plastic-surgery|seoul",
+          "clinic_display_name": "Banobagi Plastic Surgery",
+          "city": "Seoul",
+          "source": "naver_cafe",
+          "source_review_id": "nc-87200",
+          "source_url": "https://example.invalid/naver/87200",
+          "language_original": "en",
+          "language_display": "en",
+          "body_original": "Fat grafting to cheeks — subtle, not overdone. Clinic handled airport pickup and hotel. Would recommend for medical tourism.",
+          "body_translated": "Fat grafting to cheeks — subtle, not overdone. Clinic handled airport pickup and hotel. Would recommend for medical tourism.",
+          "translation_method": "none",
+          "author_handle": "aussie_ae",
+          "reviewed_at": "2025-09-18",
+          "content_hash": "3ff6e150",
+          "trust": {
+            "verified_procedure": true,
+            "verified_surgeon": true,
+            "source_weight": 0.72
+          },
+          "trust_score": 0.874,
+          "procedure": "Facial fat grafting",
+          "surgeon_name": "Dr. Lee",
+          "dedupe_count": 2
+        },
+        {
+          "id": "nr_006",
+          "clinic_key": "banobagi-plastic-surgery|seoul",
+          "clinic_display_name": "Banobagi Plastic Surgery",
+          "city": "Seoul",
+          "source": "naver_cafe",
+          "source_review_id": "nc-91550",
+          "source_url": "https://example.invalid/naver/91550",
+          "language_original": "ko",
+          "language_display": "en",
+          "body_original": "윤곽 3종 후기. 병원 시설 깨끗하고 간호사분들 친절. 아직 붓기 있지만 라인이 예뻐요.",
+          "body_translated": "Facial contouring (3-part) review. Clean facilities, kind nurses. Still swollen but the lines look good.",
+          "translation_method": "human",
+          "author_handle": "tokyo_hana",
+          "reviewed_at": "2026-02-03",
+          "content_hash": "233e667c",
+          "trust": {
+            "verified_procedure": true,
+            "verified_surgeon": true,
+            "source_weight": 0.72
+          },
+          "trust_score": 0.874,
+          "procedure": "Facial contouring",
+          "surgeon_name": "Dr. Choi",
+          "dedupe_count": 1
+        }
+      ],
+      "review_count": 2,
+      "avg_trust_score": 0.874
+    },
+    {
+      "clinic_key": "id-hospital|seoul",
+      "display_name": "ID Hospital",
+      "city": "Seoul",
+      "reviews": [
+        {
+          "id": "nr_001",
+          "clinic_key": "id-hospital|seoul",
+          "clinic_display_name": "ID Hospital",
+          "city": "Seoul",
+          "source": "naver_cafe",
+          "source_review_id": "nc-88421",
+          "source_url": "https://example.invalid/naver/88421",
+          "language_original": "ko",
+          "language_display": "en",
+          "body_original": "코성형 3개월 후기. 붓기는 2주만에 빠졌고 자연스러워요. 원장님 상담이 꼼꼼했습니다.",
+          "body_translated": "Rhinoplasty 3-month update. Swelling gone in two weeks and looks natural. The surgeon's consult was thorough.",
+          "translation_method": "human",
+          "author_handle": "skyline_j",
+          "reviewed_at": "2025-11-02",
+          "content_hash": "2b688a75",
+          "trust": {
+            "verified_procedure": true,
+            "verified_surgeon": true,
+            "source_weight": 0.72
+          },
+          "trust_score": 0.874,
+          "procedure": "Rhinoplasty",
+          "surgeon_name": "Dr. Park",
+          "dedupe_count": 2
+        },
+        {
+          "id": "nr_003",
+          "clinic_key": "id-hospital|seoul",
+          "clinic_display_name": "ID Hospital",
+          "city": "Seoul",
+          "source": "naver_cafe",
+          "source_review_id": "nc-90110",
+          "source_url": "https://example.invalid/naver/90110",
+          "language_original": "ko",
+          "language_display": "en",
+          "body_original": "쌍꺼풀 매몰법 받았어요. 회복 빠르고 라인 마음에 듭니다. 통역 코디 덕분에 편했어요.",
+          "body_translated": "Got buried double-eyelid surgery. Fast recovery and I love the crease. The interpreter coordinator made it easy.",
+          "translation_method": "human",
+          "author_handle": "mina_travels",
+          "reviewed_at": "2026-01-14",
+          "content_hash": "c57fec93",
+          "trust": {
+            "verified_procedure": true,
+            "verified_surgeon": false,
+            "source_weight": 0.72
+          },
+          "trust_score": 0.624,
+          "procedure": "Double eyelid (buried)",
+          "surgeon_name": "Dr. Kim",
+          "dedupe_count": 2
+        }
+      ],
+      "review_count": 2,
+      "avg_trust_score": 0.749
+    },
+    {
+      "clinic_key": "jw-plastic-surgery|seoul",
+      "display_name": "JW Plastic Surgery",
+      "city": "Seoul",
+      "reviews": [
+        {
+          "id": "nr_007",
+          "clinic_key": "jw-plastic-surgery|seoul",
+          "clinic_display_name": "JW Plastic Surgery",
+          "city": "Seoul",
+          "source": "clinic_site",
+          "source_review_id": "cs-jw-44",
+          "source_url": "https://example.invalid/jw/reviews/44",
+          "language_original": "en",
+          "language_display": "en",
+          "body_original": "Revision rhinoplasty after a US clinic mishap. JW's imaging consult set clear expectations. Breathing improved.",
+          "body_translated": "Revision rhinoplasty after a US clinic mishap. JW's imaging consult set clear expectations. Breathing improved.",
+          "translation_method": "none",
+          "author_handle": "canuck_r",
+          "reviewed_at": "2025-12-01",
+          "content_hash": "47fe7cbf",
+          "trust": {
+            "verified_procedure": true,
+            "verified_surgeon": true,
+            "source_weight": 0.55
+          },
+          "trust_score": 0.798,
+          "procedure": "Revision rhinoplasty",
+          "surgeon_name": "Dr. Song",
+          "dedupe_count": 1
+        },
+        {
+          "id": "nr_008",
+          "clinic_key": "jw-plastic-surgery|seoul",
+          "clinic_display_name": "JW Plastic Surgery",
+          "city": "Seoul",
+          "source": "naver_cafe",
+          "source_review_id": "nc-89001",
+          "source_url": "https://example.invalid/naver/89001",
+          "language_original": "ko",
+          "language_display": "en",
+          "body_original": "눈매교정만 했는데 인상이 부드러워졌어요. 가격은 비싼 편이지만 결과 만족.",
+          "body_translated": "Only had canthoplasty / eye-shape correction — expression looks softer. Pricey but happy with the result.",
+          "translation_method": "human",
+          "author_handle": "seoul_guest_99",
+          "reviewed_at": "2026-03-10",
+          "content_hash": "ca5f1fbe",
+          "trust": {
+            "verified_procedure": false,
+            "verified_surgeon": false,
+            "source_weight": 0.72
+          },
+          "trust_score": 0.324,
+          "procedure": "Canthoplasty",
+          "dedupe_count": 1
+        }
+      ],
+      "review_count": 2,
+      "avg_trust_score": 0.561
+    }
+  ],
   "stats": {
     "raw_input": 9,
     "after_normalize": 9,
