@@ -117,6 +117,28 @@
     margin: 0; font-size: 12.5px; color: var(--muted);
     border-left: 2px solid var(--border); padding-left: 10px;
   }
+  .example-box {
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 16px; margin: 16px 0;
+    font-size: 13px; font-family: ui-monospace, monospace;
+  }
+  .example-box h4 {
+    margin: 0 0 8px; font-size: 12px; text-transform: uppercase;
+    letter-spacing: .06em; color: var(--accent); font-weight: 600;
+  }
+  .example-box pre {
+    margin: 0; overflow-x: auto; white-space: pre-wrap;
+    word-break: break-word;
+  }
+  .flow-arrow {
+    text-align: center; font-size: 24px; color: var(--accent);
+    margin: 8px 0; user-select: none;
+  }
+  .highlight-box {
+    background: rgba(126,184,255,.08); border: 1px solid rgba(126,184,255,.3);
+    border-radius: 8px; padding: 12px; margin: 12px 0;
+  }
+  .highlight-box strong { color: var(--accent2); }
   footer {
     margin-top: 28px; padding: 16px 18px; color: var(--muted); font-size: 12.5px;
     border: 1px dashed var(--border); border-radius: var(--radius);
@@ -154,14 +176,63 @@
     <div class="stats" id="stats"></div>
 
     <section>
+      <h2>How It Works: Input → Output</h2>
+      <p style="color: var(--muted); max-width: 68ch; margin-bottom: 18px;">
+        The pipeline demonstrates cross-source deduplication and trust scoring with real examples from the fixtures.
+      </p>
+
+      <div class="example-box">
+        <h4>📥 Sample Raw Input (fixtures/raw-reviews.json)</h4>
+        <pre>{
+  "source": "naver_cafe",
+  "clinic_name": "ID Hospital",
+  "author_handle": "skyline_j",
+  "reviewed_at": "2025-11-02",
+  "body": "코성형 3개월 후기. 붓기는 2주만에 빠졌고...",
+  "body_en": "Rhinoplasty 3-month update. Swelling gone...",
+  "verified_procedure": <strong style="color: var(--good)">true</strong>,
+  "verified_surgeon": <strong style="color: var(--good)">true</strong>
+}</pre>
+      </div>
+
+      <div class="example-box">
+        <h4>📥 Duplicate from Different Source (same review, clinic site)</h4>
+        <pre>{
+  "source": "clinic_site",
+  "clinic_name": "I.D. Hospital",  <span style="color: var(--accent)">← name variant</span>
+  "author_handle": "skyline_j",     <span style="color: var(--accent)">← same author</span>
+  "reviewed_at": "2025-11-02",     <span style="color: var(--accent)">← same date</span>
+  "body": "Rhinoplasty 3-month update...",
+  "verified_procedure": <strong style="color: var(--good)">true</strong>,
+  "verified_surgeon": <strong style="color: var(--warn)">false</strong>  <span style="color: var(--accent)">← weaker signal</span>
+}</pre>
+      </div>
+
+      <div class="flow-arrow">↓</div>
+
+      <div class="highlight-box">
+        <strong>Pipeline Processing:</strong><br>
+        1. Normalize: <code>ID Hospital</code> + <code>I.D. Hospital</code> → <code>clinic_key: "id-hospital|seoul"</code><br>
+        2. Hash: <code>fnv1a(skyline_j|2025-11-02|rhinoplasty...)</code> → <code>content_hash: "2b688a75"</code><br>
+        3. Trust: Naver (0.72) + both flags → <strong style="color: var(--good)">0.874</strong> vs. Clinic (0.55) + proc only → 0.572<br>
+        4. Dedupe: Keep Naver version (higher trust), OR verification flags → both kept<br>
+        5. Result: <strong>1 review</strong> with <code>dedupe_count: 2</code>
+      </div>
+
+      <div class="flow-arrow">↓</div>
+    </section>
+
+    <section>
       <h2>Normalized clinics <small id="clinic-count"></small></h2>
       <div id="clinics"></div>
     </section>
 
     <footer>
       Assessment stub for We The Flywheel · Not real patient data · No live scraping ·
-      Run <code>node pipeline.mjs</code> to regenerate <code>data.json</code> ·
-      Trust = <code>0.45·source + 0.30·verified_procedure + 0.25·verified_surgeon</code>
+      <strong>9 raw reviews → 6 after dedupe (3 merged) → 3 clinics</strong> ·
+      Trust = <code>0.45·source + 0.30·verified_procedure + 0.25·verified_surgeon</code> ·
+      See <a href="https://github.com/brandon-mccray/gbg-review-stub" target="_blank" style="color: var(--accent2);">README</a> + 
+      <a href="https://github.com/brandon-mccray/gbg-review-stub/blob/main/ARCHITECTURE.md" target="_blank" style="color: var(--accent2);">ARCHITECTURE.md</a> for full details
     </footer>
   </div>
 
