@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Gangnam Beauty Guide — Review Syndication Stub</title>
+<meta name="description" content="Synthetic assessment stub: normalize, translate, dedupe, and trust-score Korean aesthetics reviews for English medical-tourism buyers." />
+<style>
+  :root {
+    --bg: #0f1218;
+    --surface: #1a1f2b;
+    --surface2: #232a3a;
+    --border: #2e3648;
+    --text: #e8ecf4;
+    --muted: #9aa3b5;
+    --accent: #e8a0bf;
+    --accent2: #7eb8ff;
+    --good: #6bcf8e;
+    --warn: #e6c07b;
+    --radius: 14px;
+    --shadow: 0 8px 28px rgba(0,0,0,.35);
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background:
+      radial-gradient(1200px 600px at 10% -10%, #2a1a28 0%, transparent 55%),
+      radial-gradient(900px 500px at 100% 0%, #152238 0%, transparent 50%),
+      var(--bg);
+    color: var(--text);
+    line-height: 1.55;
+    min-height: 100vh;
+  }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 28px 18px 64px; }
+  header {
+    display: grid; gap: 12px;
+    padding: 28px 24px;
+    background: linear-gradient(145deg, var(--surface), #161b27);
+    border: 1px solid var(--border);
+    border-radius: calc(var(--radius) + 4px);
+    box-shadow: var(--shadow);
+    margin-bottom: 22px;
+  }
+  .eyebrow {
+    display: inline-flex; gap: 8px; align-items: center;
+    font-size: 12px; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--accent); font-weight: 600;
+  }
+  .badge-synth {
+    background: rgba(232,160,191,.12); border: 1px solid rgba(232,160,191,.35);
+    color: var(--accent); padding: 2px 8px; border-radius: 999px;
+    font-size: 11px; letter-spacing: .04em;
+  }
+  h1 { margin: 0; font-size: clamp(1.45rem, 3.5vw, 1.9rem); font-weight: 700; letter-spacing: -.02em; }
+  .lede { margin: 0; color: var(--muted); max-width: 62ch; }
+  .pipeline {
+    display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px;
+  }
+  .step {
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 999px; padding: 6px 12px; font-size: 12px; color: var(--text);
+  }
+  .step span { color: var(--accent2); font-weight: 700; margin-right: 4px; }
+  .stats {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px; margin: 18px 0 8px;
+  }
+  .stat {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 14px 14px 12px;
+  }
+  .stat b { display: block; font-size: 1.45rem; font-variant-numeric: tabular-nums; }
+  .stat span { font-size: 12px; color: var(--muted); }
+  section h2 {
+    font-size: 1.05rem; margin: 28px 0 12px; font-weight: 650;
+    display: flex; align-items: baseline; gap: 10px;
+  }
+  section h2 small { color: var(--muted); font-weight: 500; font-size: 13px; }
+  .clinic {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 18px 18px 8px;
+    margin-bottom: 16px; box-shadow: var(--shadow);
+  }
+  .clinic-head {
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px;
+    padding-bottom: 12px; border-bottom: 1px solid var(--border); margin-bottom: 8px;
+  }
+  .clinic-head h3 { margin: 0; font-size: 1.15rem; }
+  .clinic-meta { color: var(--muted); font-size: 13px; margin-top: 2px; }
+  .clinic-score {
+    text-align: right; font-size: 13px; color: var(--muted);
+  }
+  .clinic-score strong {
+    display: block; font-size: 1.35rem; color: var(--good);
+    font-variant-numeric: tabular-nums;
+  }
+  .review {
+    padding: 14px 0; border-bottom: 1px solid var(--border);
+  }
+  .review:last-child { border-bottom: none; }
+  .review-top {
+    display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+    margin-bottom: 8px; font-size: 13px;
+  }
+  .pill {
+    display: inline-flex; align-items: center; gap: 4px;
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 999px; padding: 3px 9px; font-size: 11px; color: var(--muted);
+  }
+  .pill.trust-hi { color: var(--good); border-color: rgba(107,207,142,.4); background: rgba(107,207,142,.08); }
+  .pill.verified { color: var(--accent2); border-color: rgba(126,184,255,.4); background: rgba(126,184,255,.08); }
+  .pill.dedupe { color: var(--warn); border-color: rgba(230,192,123,.4); background: rgba(230,192,123,.08); }
+  .author { font-weight: 600; color: var(--text); }
+  .body { margin: 0 0 8px; font-size: 14.5px; }
+  .orig {
+    margin: 0; font-size: 12.5px; color: var(--muted);
+    border-left: 2px solid var(--border); padding-left: 10px;
+  }
+  footer {
+    margin-top: 28px; padding: 16px 18px; color: var(--muted); font-size: 12.5px;
+    border: 1px dashed var(--border); border-radius: var(--radius);
+  }
+  code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .92em; }
+  a { color: var(--accent2); }
+  @media (max-width: 560px) {
+    .clinic-score { text-align: left; }
+    header { padding: 20px 16px; }
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="eyebrow">
+        Gangnam Beauty Guide
+        <span class="badge-synth">SYNTHETIC DATA</span>
+      </div>
+      <h1>Review Syndication Stub</h1>
+      <p class="lede">
+        A deliberate, runnable slice of the hard problem: pull reviews from Korean sources,
+        normalize clinic identity, translate for English medical-tourism buyers, de-duplicate
+        cross-source copies, and surface trust badges (verified procedure / verified surgeon).
+      </p>
+      <div class="pipeline" aria-label="Pipeline stages">
+        <div class="step"><span>1</span> Normalize clinic_key</div>
+        <div class="step"><span>2</span> Translate → EN</div>
+        <div class="step"><span>3</span> content_hash dedupe</div>
+        <div class="step"><span>4</span> Trust score 0–1</div>
+        <div class="step"><span>5</span> Clinic cards</div>
+      </div>
+    </header>
+
+    <div class="stats" id="stats"></div>
+
+    <section>
+      <h2>Normalized clinics <small id="clinic-count"></small></h2>
+      <div id="clinics"></div>
+    </section>
+
+    <footer>
+      Assessment stub for We The Flywheel · Not real patient data · No live scraping ·
+      Run <code>node pipeline.mjs</code> to regenerate <code>data.json</code> ·
+      Trust = <code>0.45·source + 0.30·verified_procedure + 0.25·verified_surgeon</code>
+    </footer>
+  </div>
+
+  <script>
+  // Embedded pipeline output (also loads data.json when served over HTTP).
+  const DATA = {
+  "generated_at": "2026-09-25T17:11:28.328Z",
+  "synthetic": true,
+  "note": "Synthetic assessment data for Gangnam Beauty Guide review syndication stub. Not real patient reviews.",
+  "design": {
+    "clinic_key": "slug(canonicalize(name))|slug(city) — alias table stubs a clinic master DB",
+    "content_hash": "fnv1a(author_slug|date|normalized_body) — EN body preferred so KO/EN copies collide",
+    "trust_score": "0.45*source_weight + 0.30*verified_procedure + 0.25*verified_surgeon",
+    "merge_policy": "same content_hash → keep highest trust_score, else earliest reviewed_at; OR verified flags",
+    "source_weights": {
+      "realself": 0.85,
+      "naver_cafe": 0.72,
+      "daum_cafe": 0.68,
+      "clinic_site": 0.55
+    }
+  },
+  "clinics": [],
+  "stats": {
+    "raw_input": 9,
+    "after_normalize": 9,
+    "after_dedupe": 6,
+    "duplicates_merged": 3,
+    "clinics": 3
+  }
+};
+
+  function esc(s) {
+    return String(s ?? "").replace(/[&<>"']/g, (c) => ({
+      "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+    }[c]));
+  }
+
+  function sourceLabel(s) {
+    return ({ naver_cafe: "Naver Cafe", clinic_site: "Clinic site", daum_cafe: "Daum Cafe", realself: "RealSelf" })[s] || s;
+  }
+
+  function render(data) {
+    const st = data.stats;
+    document.getElementById("stats").innerHTML = [
+      ["Raw input", st.raw_input],
+      ["After dedupe", st.after_dedupe],
+      ["Duplicates merged", st.duplicates_merged],
+      ["Clinics", st.clinics],
+    ].map(([k,v]) => `<div class="stat"><b>${esc(v)}</b><span>${esc(k)}</span></div>`).join("");
+
+    document.getElementById("clinic-count").textContent =
+      `${st.clinics} clinics · avg trust ranked`;
+
+    const root = document.getElementById("clinics");
+    root.innerHTML = data.clinics.map((c) => {
+      const reviews = c.reviews.map((r) => {
+        const badges = [];
+        badges.push(`<span class="pill trust-hi">trust ${r.trust_score.toFixed(3)}</span>`);
+        if (r.trust.verified_procedure) badges.push(`<span class="pill verified">✓ procedure</span>`);
+        if (r.trust.verified_surgeon) badges.push(`<span class="pill verified">✓ surgeon</span>`);
+        badges.push(`<span class="pill">${esc(sourceLabel(r.source))}</span>`);
+        if ((r.dedupe_count || 1) > 1) {
+          badges.push(`<span class="pill dedupe">deduped ×${r.dedupe_count}</span>`);
+        }
+        const orig = r.language_original !== "en"
+          ? `<p class="orig" lang="${esc(r.language_original)}">${esc(r.body_original)}</p>`
+          : "";
+        return `<article class="review">
+          <div class="review-top">
+            <span class="author">@${esc(r.author_handle)}</span>
+            <span class="pill">${esc(r.reviewed_at)}</span>
+            ${r.procedure ? `<span class="pill">${esc(r.procedure)}</span>` : ""}
+            ${badges.join("")}
+          </div>
+          <p class="body">${esc(r.body_translated)}</p>
+          ${orig}
+        </article>`;
+      }).join("");
+
+      return `<article class="clinic">
+        <div class="clinic-head">
+          <div>
+            <h3>${esc(c.display_name)}</h3>
+            <div class="clinic-meta">${esc(c.city)} · <code>${esc(c.clinic_key)}</code> · ${c.review_count} review${c.review_count===1?"":"s"}</div>
+          </div>
+          <div class="clinic-score">
+            <strong>${c.avg_trust_score.toFixed(3)}</strong>
+            avg trust
+          </div>
+        </div>
+        ${reviews}
+      </article>`;
+    }).join("");
+  }
+
+  render(DATA);
+
+  // Prefer fresh data.json when available (e.g. after re-running pipeline + serve).
+  if (location.protocol !== "file:") {
+    fetch("data.json", { cache: "no-store" })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => { if (d && d.clinics) render(d); })
+      .catch(() => {});
+  }
+  </script>
+</body>
+</html>

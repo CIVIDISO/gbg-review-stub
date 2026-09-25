@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-09-25T17:11:51.728Z",
+  "synthetic": true,
+  "note": "Synthetic assessment data for Gangnam Beauty Guide review syndication stub. Not real patient reviews.",
+  "design": {
+    "clinic_key": "slug(canonicalize(name))|slug(city) — alias table stubs a clinic master DB",
+    "content_hash": "fnv1a(author_slug|date|normalized_body) — EN body preferred so KO/EN copies collide",
+    "trust_score": "0.45*source_weight + 0.30*verified_procedure + 0.25*verified_surgeon",
+    "merge_policy": "same content_hash → keep highest trust_score, else earliest reviewed_at; OR verified flags",
+    "source_weights": {
+      "realself": 0.85,
+      "naver_cafe": 0.72,
+      "daum_cafe": 0.68,
+      "clinic_site": 0.55
+    }
+  },
+  "clinics": [],
+  "stats": {
+    "raw_input": 9,
+    "after_normalize": 9,
+    "after_dedupe": 6,
+    "duplicates_merged": 3,
+    "clinics": 3
+  }
+}

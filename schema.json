@@ -1,0 +1,58 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "GBG Review Syndication Stub",
+  "description": "Synthetic assessment schema — NormalizedReview + ClinicIdentity",
+  "definitions": {
+    "ClinicIdentity": {
+      "type": "object",
+      "required": ["clinic_key", "display_name", "city"],
+      "properties": {
+        "clinic_key": { "type": "string", "description": "slug(name)|slug(city)" },
+        "display_name": { "type": "string" },
+        "city": { "type": "string" },
+        "district": { "type": "string" }
+      }
+    },
+    "TrustFlags": {
+      "type": "object",
+      "required": ["verified_procedure", "verified_surgeon", "source_weight"],
+      "properties": {
+        "verified_procedure": { "type": "boolean" },
+        "verified_surgeon": { "type": "boolean" },
+        "source_weight": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    },
+    "NormalizedReview": {
+      "type": "object",
+      "required": [
+        "id", "clinic_key", "clinic_display_name", "city",
+        "source", "source_review_id", "language_original", "language_display",
+        "body_original", "body_translated", "translation_method",
+        "author_handle", "reviewed_at", "content_hash", "trust", "trust_score"
+      ],
+      "properties": {
+        "id": { "type": "string" },
+        "clinic_key": { "type": "string" },
+        "clinic_display_name": { "type": "string" },
+        "city": { "type": "string" },
+        "source": { "type": "string" },
+        "source_review_id": { "type": "string" },
+        "source_url": { "type": "string" },
+        "language_original": { "type": "string" },
+        "language_display": { "const": "en" },
+        "body_original": { "type": "string" },
+        "body_translated": { "type": "string" },
+        "translation_method": { "enum": ["human", "mt_stub", "none"] },
+        "author_handle": { "type": "string" },
+        "reviewed_at": { "type": "string", "format": "date" },
+        "content_hash": { "type": "string" },
+        "trust": { "$ref": "#/definitions/TrustFlags" },
+        "trust_score": { "type": "number", "minimum": 0, "maximum": 1 },
+        "procedure": { "type": "string" },
+        "surgeon_name": { "type": "string" },
+        "duplicate_of": { "type": "string" },
+        "dedupe_count": { "type": "integer", "minimum": 1 }
+      }
+    }
+  }
+}
